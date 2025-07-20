@@ -1,8 +1,8 @@
 import { Inngest } from "inngest";
 import connectionSB from "./db";
-import User from "../models/User"; // ✅ Make sure this path is correct
+import User from "../models/User";
 
-// Create a client to send and receive events
+/// Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
 
 // Inngest function to save data to a database
