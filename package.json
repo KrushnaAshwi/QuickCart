@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^6.25.4",
     "inngest": "^3.40.1",
     "mongoos": "^0.0.1-security",
+    "mongoose": "^8.16.4",
     "next": "^15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
