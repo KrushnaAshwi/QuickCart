@@ -1,8 +1,6 @@
 import { Inngest } from "inngest";
 import connectionSB from "./db";
-
-import User from "../models/User";
-// Make sure this path is correct
+import User from "../models/User"; // ✅ Make sure this path is correct
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
@@ -21,7 +19,7 @@ export const syncUserCreation = inngest.createFunction(
 
     const userData = {
       _id: id,
-      email: email_addresses[0]?.email_address || "", // optional chaining for safety
+      email: email_addresses?.[0]?.email_address || "",
       name: `${first_name} ${last_name}`,
       imageURL: image_url,
     };
@@ -44,7 +42,7 @@ export const syncUserUpdate = inngest.createFunction(
       event.data;
 
     const userData = {
-      email: email_addresses[0]?.email_address || "",
+      email: email_addresses?.[0]?.email_address || "",
       name: `${first_name} ${last_name}`,
       imageURL: image_url,
     };
