@@ -1,28 +1,39 @@
 import mongoose from "mongoose";
 
-let cashed = global.mongoose
+let cached = global.mongoose;
 
-if (!cashed) {
-  cashed = global.mongoose={conn:null,Promise:null}
-  
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
-async function connectionSB ()  {
 
-  if (cashed.conn) {
-    return cashed.conn
-    
-  }
-  if (!cashed.Promise) {
-    const opts ={
-      bufferCommands:false
-    }
-    cashed.Promise=mongoose.connect('${process.env.MONGODB_URI}/quickcart',opts).then(mongoose =>{
-      return mongoose
-    } )
+async function connectionSB() {
+  if (cached.conn) return cached.conn;
 
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+    };
+
+    cached.promise = mongoose
+      .connect(process.env.MONGODB_URI, opts)
+      .then((mongoose) => {
+        console.log("✅ MongoDB connected successfully");
+        return mongoose;
+      })
+      .catch((err) => {
+        console.error("❌ MongoDB connection error:", err.message);
+        throw err;
+      });
   }
-cashed.conn= await cashed.Promise
-return cashed.conn
-  
+
+  try {
+    cached.conn = await cached.promise;
+    return cached.conn;
+  } catch (error) {
+    // Optional: reset cached.promise if connection failed
+    cached.promise = null;
+    throw error;
+  }
 }
+
 export default connectionSB;
