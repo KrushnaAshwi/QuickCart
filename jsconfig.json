@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",             // Required for "paths" to work
+    "baseUrl": ".", 
     "paths": {
-      "@/*": ["./*"],
-      "@models/*": ["models/*"],
-      "@config/*": ["config/*"],
-      "@components/*": ["components/*"]
+      "@/*": ["*"]
     }
   }
 }
