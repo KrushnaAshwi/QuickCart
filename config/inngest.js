@@ -1,6 +1,7 @@
 import { Inngest } from "inngest";
 import connectionSB from "./db";
 import User from "models1/user";
+import User from "models1/user";
 export const inngest = new Inngest({ id: "quickcart-next" });
 
 // Inngest function to save data to a database
