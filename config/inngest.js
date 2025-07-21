@@ -1,6 +1,6 @@
 import { Inngest } from "inngest";
 import connectionSB from "./db";
-import User from "./models/User"; // ✅ You forgot this import
+import User from "../models/User"; // ✅ CORRECT PATH BASED ON YOUR FOLDER STRUCTURE
 
 export const inngest = new Inngest({ id: "quickcart-next" });
 
