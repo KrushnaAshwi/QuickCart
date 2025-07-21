@@ -1,5 +1,7 @@
 import { Inngest } from "inngest";
 import connectionSB from "./db";
+import User from "./models/User"; // ✅ You forgot this import
+
 export const inngest = new Inngest({ id: "quickcart-next" });
 
 // Inngest function to save data to a database
@@ -18,7 +20,7 @@ export const syncUserCreation = inngest.createFunction(
       _id: id,
       email: email_addresses?.[0]?.email_address || "",
       name: `${first_name} ${last_name}`,
-      imageURL: image_url,
+      image: image_url, // ✅ changed from imageURL to image to match schema
     };
 
     await connectionSB();
@@ -41,7 +43,7 @@ export const syncUserUpdate = inngest.createFunction(
     const userData = {
       email: email_addresses?.[0]?.email_address || "",
       name: `${first_name} ${last_name}`,
-      imageURL: image_url,
+      image: image_url, // ✅ match schema field
     };
 
     await connectionSB();
