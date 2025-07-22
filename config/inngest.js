@@ -28,6 +28,7 @@ export const syncUserCreation = inngest.createFunction(
 );
 
 // Inngest function to update data in DB
+// edd
 export const syncUserUpdate = inngest.createFunction(
   {
     id: "update-user-from-clerk",
